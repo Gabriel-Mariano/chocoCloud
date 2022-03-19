@@ -2,8 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container:{
-        width:188,
-        marginVertical:10,
+        width:180,
+        marginVertical:5,
+        marginHorizontal:5,
 
         backgroundColor:'#fff',
         borderTopRightRadius:10,
@@ -23,12 +24,13 @@ export const styles = StyleSheet.create({
         paddingVertical:10,
     },
     title:{
-        fontSize:16,
+        fontSize:14,
         fontWeight:'bold',
         marginVertical:10
 
     },
     description:{
+        fontSize:12,
         color:'#9C9C9C'
     },
     price:{

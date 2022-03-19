@@ -7,7 +7,7 @@ import {
 
 export const listProducts = async() => {
     try {
-        const { data } = await axios.get('https://gist.githubusercontent.com/Gabriel-Mariano/7361b1bc99c5c37cc1ec82d054affe6b/raw/db9469c4a489db7c577f8fe09331e9ab0e560191/api.json');
+        const { data } = await axios.get('https://gist.githubusercontent.com/Gabriel-Mariano/7361b1bc99c5c37cc1ec82d054affe6b/raw/b463fbf33839cf7a1c4921f3268265b4b43449bc/api.json');
 
         return successObject(data);
     } catch (error) {

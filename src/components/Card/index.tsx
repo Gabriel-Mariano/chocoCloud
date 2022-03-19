@@ -14,10 +14,7 @@ const Card:React.FC<ProductsValues> = props => {
     } = props;
 
     return (
-        <View 
-            key={id} 
-            style={styles.container}
-        >
+        <View style={styles.container}>
             <Image 
                 source={{uri:image}}
                 accessibilityLabel={name}
