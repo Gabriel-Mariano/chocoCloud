@@ -1,7 +1,7 @@
 export const successObject = (data:any) => {
     return {
         success:true,
-        data:data.data
+        data:data
     }
 }
 

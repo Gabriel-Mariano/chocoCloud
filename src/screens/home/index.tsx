@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackProps } from '../../routes/index.d';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { listProducts } from '../../services/api';
+import { Card } from '../../components/Card';
 
 
 const HomeScreen = () => {
@@ -20,7 +21,7 @@ const HomeScreen = () => {
 
     const fetchProduct = useCallback(async () => {
         const response = await listProducts();
-
+        
         response.success
             ? successResponse(response.data)
             : failedResponse()
@@ -37,7 +38,20 @@ const HomeScreen = () => {
     return (
         <SafeAreaView style={styles.container}> 
             <View>
-
+                {
+                    products?.map((product)=> {
+                        return (
+                            <Card
+                                id={product.id}
+                                name={product.name}
+                                description={product.description}
+                                price={product.price}
+                                image={product.image}
+                                key={product.id}
+                            />
+                        )
+                    })
+                }
             </View>
         </SafeAreaView>
     )
