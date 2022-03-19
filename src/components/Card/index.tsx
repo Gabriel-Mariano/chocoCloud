@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import { COLORS } from '../../themes/colors';
 import { Button } from '../Button';
 import { ProductsValues } from './index.d';
 import { styles } from './styles';
 
 const Card:React.FC<ProductsValues> = props => {
     const {
-        id,
         name,
         description,
         image,
@@ -32,7 +32,7 @@ const Card:React.FC<ProductsValues> = props => {
                 </Text>
                 <Button
                     title="Adicionar"
-                    background="#00CD66"
+                    background={COLORS.success}
                 />
             </View>
         </View>

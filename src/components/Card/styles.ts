@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../themes/colors';
 
 export const styles = StyleSheet.create({
     container:{
@@ -6,7 +7,7 @@ export const styles = StyleSheet.create({
         marginVertical:5,
         marginHorizontal:5,
 
-        backgroundColor:'#fff',
+        backgroundColor:COLORS.white,
         borderTopRightRadius:10,
         borderTopLeftRadius:10,
         borderBottomLeftRadius:10,
@@ -31,11 +32,11 @@ export const styles = StyleSheet.create({
     },
     description:{
         fontSize:12,
-        color:'#9C9C9C'
+        color:COLORS.placeholder
     },
     price:{
         fontWeight:'bold',
-        color:'#00CD66',
+        color:COLORS.success,
         marginVertical:15,
     }
 })
