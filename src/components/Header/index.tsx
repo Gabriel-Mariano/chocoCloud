@@ -31,7 +31,11 @@ const Header: React.FC = () => {
 
     const PressableArrow = () => (
         <Pressable onPress={goBack}>
-            <Text>Voltar</Text>
+            <Icon 
+                name="arrow-left" 
+                size={22} 
+                color={COLORS.white}
+            />
         </Pressable>
     );
 

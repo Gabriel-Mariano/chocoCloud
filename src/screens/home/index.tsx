@@ -4,15 +4,11 @@ import { Alert, FlatList } from 'react-native';
 import { ProductsValues } from '../../context/index.d';
 import { styles } from './style';
 
-import { useNavigation } from '@react-navigation/native';
-import { StackProps } from '../../routes/index.d';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { listProducts } from '../../services/api';
 import { Card } from '../../components/Card';
 
 const HomeScreen = () => {
     const [products, setProducts] = useState<ProductsValues[]>([]);
-    const navigation = useNavigation<NativeStackNavigationProp<StackProps>>();
 
     useEffect(()=> {
         fetchProduct();
@@ -45,6 +41,7 @@ const HomeScreen = () => {
                 renderItem={({ item })=> {
                     return (
                         <Card
+                            id={item.id}
                             name={item.name}
                             description={item.description}
                             price={item.price}
