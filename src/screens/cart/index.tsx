@@ -4,6 +4,8 @@ import { FlatList, Text } from 'react-native';
 import { CartItems } from '../../components/CartItems';
 import { styles } from './style';
 import { useShoppingCart } from '../../context';
+import { COLORS } from '../../themes/colors';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const CartScreen = () => {
     const { cart } = useShoppingCart();
@@ -12,6 +14,19 @@ const CartScreen = () => {
         return cart.length > 1
             ? `${cart.length} produtos selecionados`
             : `${cart.length} produto selecionado`
+    }
+
+    if(cart.length === 0){
+        return <SafeAreaView style={styles.emptyContent}> 
+                    <Icon 
+                        name="cart-off" 
+                        size={36} 
+                        color={COLORS.placeholder}
+                    />
+                    <Text style={styles.warning}>
+                        Seu carrinho está vázio
+                    </Text>
+                </SafeAreaView>
     }
 
     return (

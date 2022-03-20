@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../themes/colors';
 
 export const styles = StyleSheet.create({
     container:{
@@ -10,5 +11,10 @@ export const styles = StyleSheet.create({
     flatlist:{
         width:'100%',
         paddingHorizontal:5,
+    },
+    warning:{
+        fontWeight:'bold',
+        color:COLORS.placeholder,
+        marginVertical:20,
     }
 })
