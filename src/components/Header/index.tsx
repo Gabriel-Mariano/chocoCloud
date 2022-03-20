@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Image, Pressable, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather'
 import Logo from '../../assets/logo.png';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackProps } from '../../routes/index.d';
 import { styles } from './styles';
+import { COLORS } from '../../themes/colors';
 
 const Header: React.FC = () => {
     const location = useRoute();
@@ -35,7 +37,11 @@ const Header: React.FC = () => {
 
     const renderContentRight = () => (
         <Pressable onPress={()=> {} }>
-            
+            <Icon 
+                name="shopping-cart" 
+                size={22} 
+                color={COLORS.white}
+            />
         </Pressable>
     );
 
