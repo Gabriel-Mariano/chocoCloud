@@ -34,5 +34,11 @@ export const styles = StyleSheet.create({
         resizeMode:'contain',
         width:90,
         height:45
+    },
+    badge:{
+        position:'absolute',
+        marginLeft:12,
+        marginTop:-5,
+        backgroundColor:COLORS.danger
     }
 });

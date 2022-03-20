@@ -1,17 +1,22 @@
 import React from 'react';
-import { View, Image, Pressable, Text } from 'react-native';
+import { View, Image, Pressable } from 'react-native';
+import { Badge } from '../Badge';
 import Icon from 'react-native-vector-icons/Feather'
 import Logo from '../../assets/logo.png';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StackProps } from '../../routes/index.d';
+
 import { styles } from './styles';
 import { COLORS } from '../../themes/colors';
+import { useShoppingCart } from '../../context';
 
 const Header: React.FC = () => {
     const location = useRoute();
     const navigation = useNavigation<NativeStackNavigationProp<StackProps>>();
+
+    const { cart } = useShoppingCart();
 
     const renderContentLeft = () => {
         return location.name === 'Home' 
@@ -40,14 +45,21 @@ const Header: React.FC = () => {
     );
 
     const renderContentRight = () => (
-        <Pressable onPress={()=> {} }>
+        <Pressable onPress={()=> navigation.navigate('Cart') }>
             <Icon 
                 name="shopping-cart" 
                 size={22} 
                 color={COLORS.white}
             />
+            {renderBadge()}
         </Pressable>
     );
+
+    const renderBadge = () => {
+        return cart.length > 0
+            ? <Badge style={styles.badge} />
+            : null
+    }
 
     return (
         <View style={styles.container}>
