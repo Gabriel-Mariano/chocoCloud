@@ -6,6 +6,8 @@ import { ProductsValues } from './index.d';
 import { COLORS } from '../../themes/colors';
 import { styles } from './styles';
 
+import imagePlaceholder from '../../assets/image_placeholder.jpeg';
+
 import { useNavigation } from '@react-navigation/native';
 import { StackProps } from '../../routes/index.d';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -62,6 +64,7 @@ const Card: React.FC<ProductsValues> = props => {
                 source={{ uri: image }}
                 accessibilityLabel={name}
                 style={styles.image}
+                defaultSource={imagePlaceholder}
             />
             <View style={styles.wrapperContent}>
                 <Text style={styles.title}>

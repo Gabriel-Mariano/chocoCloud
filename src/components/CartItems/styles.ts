@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
     },
     description:{
         fontSize:10,
-        color:COLORS.placeholder
+        color:COLORS.placeholder,
+        marginTop:5
     },
 })

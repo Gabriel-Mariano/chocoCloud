@@ -4,6 +4,7 @@ import { ProductsValues } from '../../context/index.d';
 import { styles } from './styles';
 
 import Icon from 'react-native-vector-icons/Fontisto';
+import imagePlaceholder from '../../assets/image_placeholder.jpeg';
 import { COLORS } from '../../themes/colors';
 import { useShoppingCart } from '../../context';
 
@@ -25,6 +26,7 @@ const CartItems:React.FC<ProductsValues> = props => {
                         source={{ uri:image }} 
                         accessibilityLabel={name}
                         style={styles.image}
+                        defaultSource={imagePlaceholder}
                     />
                 </View>
                 <View>
