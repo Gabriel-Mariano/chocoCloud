@@ -1,8 +1,16 @@
 import React from 'react';
 
-interface ShoppingCartProps {
-    product:any[];
-    setProduct:React.Dispatch<React.SetStateAction<any[]>>;
+interface ProductsValues {
+    id:number;
+    name:string;
+    description:string;
+    price:number;
+    image:string;
 }
 
-export { ShoppingCartProps };
+interface ShoppingCartProps {
+    cart?:ProductsValues[];
+    setCart:React.Dispatch<React.SetStateAction<ProductsValues[]>>;
+}
+
+export { ShoppingCartProps, ProductsValues };

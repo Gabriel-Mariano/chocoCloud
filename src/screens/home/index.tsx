@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Alert, FlatList } from 'react-native';
-import { ProductsValues } from './index.d';
+import { ProductsValues } from '../../context/index.d';
 import { styles } from './style';
 
 import { useNavigation } from '@react-navigation/native';
