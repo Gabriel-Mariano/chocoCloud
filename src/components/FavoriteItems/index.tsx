@@ -1,22 +1,12 @@
 import React from 'react';
-import { View, Text, Image, Pressable } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { ProductsValues } from '../../context/ShoppingCart/index.d';
 import { styles } from './styles';
 
-import Icon from 'react-native-vector-icons/Fontisto';
 import imagePlaceholder from '../../assets/image_placeholder.jpeg';
-import { COLORS } from '../../themes/colors';
-import { useShoppingCart } from '../../context/ShoppingCart';
 
-const CartItems:React.FC<ProductsValues> = props => {
-    const { id, name, description, image } = props;
-    const { cart, setCart } = useShoppingCart();
-
-    const handleRemove = () => {
-        const filterCart = cart.filter((item)=> item.id !== id )
-
-        setCart(filterCart);
-    }
+const FavoriteItems:React.FC<ProductsValues> = props => {
+    const { name, description, image } = props;
 
     return (
         <View style={styles.container}>
@@ -34,15 +24,8 @@ const CartItems:React.FC<ProductsValues> = props => {
                     <Text style={styles.description}>{description}</Text>
                 </View>
             </View>
-            <View>
-                <Pressable
-                    onPress={handleRemove}
-                >
-                    <Icon name="close" size={24} color={COLORS.danger}/>
-                </Pressable>
-            </View>
         </View>
     )
 }
 
-export { CartItems };
+export { FavoriteItems };

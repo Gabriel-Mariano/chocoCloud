@@ -9,8 +9,13 @@ export const styles = StyleSheet.create({
         paddingHorizontal:10,
     },
     text:{
-        marginLeft:5,
+        marginTop:20,
         marginBottom:10,
+
+        fontSize:16,
+        fontWeight:'bold',
+        textAlign:'center',
+        color:COLORS.primary,
     },
     flatlist:{
         width:'100%',

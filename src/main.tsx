@@ -9,7 +9,9 @@ import { COLORS } from './themes/colors';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { ShoppingCartProvider } from './context/ShoppingCart';
+import { FavoritesProvider } from './context/Favorites';
 import { Routes } from './routes';
+import { ProductsProvider } from './context/Products';
 
 const Main = () => {
     const statusBarBackgroundColor = Platform.OS === 'android' ? COLORS.primary : '';
@@ -20,11 +22,15 @@ const Main = () => {
                 barStyle="light-content" 
                 backgroundColor={statusBarBackgroundColor} 
             />
-            <ShoppingCartProvider>
-                <NavigationContainer>
-                    <Routes/>
-                </NavigationContainer>
-            </ShoppingCartProvider>
+            <ProductsProvider>
+                <ShoppingCartProvider>
+                    <FavoritesProvider>
+                        <NavigationContainer>
+                            <Routes/>
+                        </NavigationContainer>
+                    </FavoritesProvider>
+                </ShoppingCartProvider>
+            </ProductsProvider>
         </SafeAreaView>
     )
 }

@@ -38,5 +38,10 @@ export const styles = StyleSheet.create({
         fontWeight:'bold',
         color:COLORS.success,
         marginVertical:15,
+    },
+    footer:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center'
     }
 })

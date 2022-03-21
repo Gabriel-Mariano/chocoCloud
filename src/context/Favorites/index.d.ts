@@ -5,6 +5,7 @@ interface ProductsValues {
     name?:string;
     description?:string;
     price?:number;
+    isFavorite?:boolean;
     image?:string;
 }
 

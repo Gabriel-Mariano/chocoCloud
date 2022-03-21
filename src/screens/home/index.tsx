@@ -18,12 +18,15 @@ import { listProducts } from '../../services/api';
 
 import IconEmoji from 'react-native-vector-icons/Entypo';
 import IconSearch from 'react-native-vector-icons/Feather';
+import { useFavorites } from '../../context/Favorites';
+import { useProduct } from '../../context/Products';
 
 const HomeScreen = () => {
-    const [products, setProducts] = useState<ProductsValues[]>([]);
-    const [filteredData, setFilteredData] = useState<ProductsValues[]>([]);
     const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [filteredData, setFilteredData] = useState<ProductsValues[]>([]);
+
+    const { products, setProducts } = useProduct();
 
     useEffect(()=> {
         fetchProduct();
@@ -90,8 +93,8 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}> 
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View>
+            {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+                
                     <Input 
                         label="Pesquise pelo produto"
                         placeholder="Ex: Bolo de chocolate, pudim ... "
@@ -113,13 +116,16 @@ const HomeScreen = () => {
                                     name={item.name}
                                     description={item.description}
                                     price={item.price}
+                                    isFavorite={item.isFavorite}
                                     image={item.image}
+                                    filteredData={filteredData}
+                                    setFilteredData={setFilteredData}
                                 />
                             )
                         }}
                     />
-                </View>
-            </TouchableWithoutFeedback>
+                
+            {/* </TouchableWithoutFeedback> */}
         </SafeAreaView>
     )
 }

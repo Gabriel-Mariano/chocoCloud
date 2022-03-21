@@ -1,16 +1,18 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Pressable } from 'react-native';
 import { Button } from '../Button';
 import { useShoppingCart } from '../../context/ShoppingCart';
+import { useProduct } from '../../context/Products';
 import { ProductsValues } from './index.d';
 import { COLORS } from '../../themes/colors';
 import { styles } from './styles';
 
-import imagePlaceholder from '../../assets/image_placeholder.jpeg';
-
 import { useNavigation } from '@react-navigation/native';
 import { StackProps } from '../../routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+import Icon from 'react-native-vector-icons/Ionicons';
+import imagePlaceholder from '../../assets/image_placeholder.jpeg';
 
 const Card: React.FC<ProductsValues> = props => {
     const {
@@ -18,9 +20,13 @@ const Card: React.FC<ProductsValues> = props => {
         name,
         description,
         image,
-        price
+        isFavorite,
+        price,
+        setFilteredData
     } = props;
     const { cart, setCart } = useShoppingCart();
+    const { products, setProducts } = useProduct();
+
     const navigation = useNavigation<NativeStackNavigationProp<StackProps>>();
 
     const handleAdd = () => {
@@ -28,6 +34,7 @@ const Card: React.FC<ProductsValues> = props => {
             id,
             name,
             description,
+            isFavorite,
             price,
             image
         }
@@ -40,6 +47,23 @@ const Card: React.FC<ProductsValues> = props => {
         const filterCart = cart.filter((item) => item.id !== id)
 
         setCart(filterCart);
+    }
+
+    const handleLike = () => {
+        const filterProducts = products.map((product)=> 
+            product.id === id 
+            ? {...product, isFavorite: !isFavorite }
+            : product
+        )
+
+        setProducts(filterProducts);
+        setFilteredData?.(filterProducts);
+    }
+
+    const renderIcons = ()  => {
+        return isFavorite
+            ? <Icon name="heart" size={24} color={COLORS.danger} />
+            : <Icon name="heart-outline" size={24} color={COLORS.danger} />
     }
 
     const renderButtons = () => {
@@ -73,9 +97,16 @@ const Card: React.FC<ProductsValues> = props => {
                 <Text style={styles.description}>
                     {description}
                 </Text>
-                <Text style={styles.price}>
-                    R$ {price?.toFixed(2)}
-                </Text>
+                <View style={styles.footer}>
+                    <Text style={styles.price}>
+                        R$ {price?.toFixed(2)}
+                    </Text>
+                    <Pressable
+                        onPress={handleLike}
+                    >
+                       {renderIcons()}
+                    </Pressable>
+                </View>
                 {renderButtons()}
             </View>
         </View>

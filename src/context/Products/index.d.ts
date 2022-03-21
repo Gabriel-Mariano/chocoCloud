@@ -9,9 +9,9 @@ interface ProductsValues {
     image?:string;
 }
 
-interface ShoppingCartProps {
-    cart:ProductsValues[];
-    setCart:React.Dispatch<React.SetStateAction<ProductsValues[]>>;
+interface ProductsProps {
+    products:ProductsValues[];
+    setProducts:React.Dispatch<React.SetStateAction<ProductsValues[]>>;
 }
 
-export { ShoppingCartProps, ProductsValues };
+export { ProductsProps, ProductsValues };
