@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
-import { ProductsValues } from '../../context/index.d';
+import { ProductsValues } from '../../context/ShoppingCart/index.d';
 import { styles } from './styles';
 
 import Icon from 'react-native-vector-icons/Fontisto';
 import imagePlaceholder from '../../assets/image_placeholder.jpeg';
 import { COLORS } from '../../themes/colors';
-import { useShoppingCart } from '../../context';
+import { useShoppingCart } from '../../context/ShoppingCart';
+
+
 
 const CartItems:React.FC<ProductsValues> = props => {
     const { id, name, description, image } = props;

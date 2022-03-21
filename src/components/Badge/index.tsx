@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ViewProps } from 'react-native';
-import { useShoppingCart } from '../../context';
+import { useShoppingCart } from '../../context/ShoppingCart';
+
 import { styles } from './styles';
 
 const Badge:React.FC<ViewProps> = props => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Button } from '../Button';
-import { useShoppingCart } from '../../context';
+import { useShoppingCart } from '../../context/ShoppingCart';
 import { ProductsValues } from './index.d';
 import { COLORS } from '../../themes/colors';
 import { styles } from './styles';

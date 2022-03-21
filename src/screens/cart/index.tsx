@@ -3,9 +3,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, Text } from 'react-native';
 import { CartItems } from '../../components/CartItems';
 import { styles } from './styles';
-import { useShoppingCart } from '../../context';
+
 import { COLORS } from '../../themes/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { useShoppingCart } from '../../context/ShoppingCart';
 
 const CartScreen = () => {
     const { cart } = useShoppingCart();

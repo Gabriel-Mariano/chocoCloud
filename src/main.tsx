@@ -8,7 +8,7 @@ import {
 import { COLORS } from './themes/colors';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { ShoppingCartProvider } from './context';
+import { ShoppingCartProvider } from './context/ShoppingCart';
 import { Routes } from './routes';
 
 const Main = () => {

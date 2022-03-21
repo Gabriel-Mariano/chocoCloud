@@ -10,7 +10,7 @@ import { StackProps } from '../../routes/types';
 
 import { styles } from './styles';
 import { COLORS } from '../../themes/colors';
-import { useShoppingCart } from '../../context';
+import { useShoppingCart } from '../../context/ShoppingCart';
 
 const Header: React.FC = () => {
     const location = useRoute();
