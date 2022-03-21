@@ -13,10 +13,10 @@ import { Card } from '../../components/Card';
 import { Input } from '../../components/TextInput';
 import { ProductsValues } from '../../context/index.d';
 import { COLORS } from '../../themes/colors';
-import { styles } from './style';
+import { styles } from './styles';
 import { listProducts } from '../../services/api';
 
-import Icon from 'react-native-vector-icons/Entypo';
+import IconEmoji from 'react-native-vector-icons/Entypo';
 import IconSearch from 'react-native-vector-icons/Feather';
 
 const HomeScreen = () => {
@@ -77,7 +77,7 @@ const HomeScreen = () => {
 
     if(products.length === 0){
         return <SafeAreaView style={styles.container}> 
-                    <Icon 
+                    <IconEmoji 
                         name="emoji-sad" 
                         size={36} 
                         color={COLORS.placeholder}
@@ -98,6 +98,7 @@ const HomeScreen = () => {
                         value={search}
                         onChangeText={(text)=> setSearch(text)}
                         leftContent={()=> <IconSearch name="search" size={18}/> }
+                        style={styles.input}
                     />
                     <FlatList
                         data={filteredData}

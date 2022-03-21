@@ -1,20 +1,18 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StackProps } from './index.d';
+import { InitalRouteProps, StackProps } from './types';
 import { Header } from '../components/Header';
 
-import HomeScreen from '../screens/home';
-import CartScreen from '../screens/cart';
+import MyTabs from './customTabs';
 
-const { Navigator, Screen } = createNativeStackNavigator<StackProps>();
+const { Navigator, Screen } = createNativeStackNavigator<InitalRouteProps>();
 
 function Routes() {
   return (
       <Navigator screenOptions={{
-        header:()=> <Header/>
+        headerShown:false
       }}>
-        <Screen name="Home" component={HomeScreen} />
-        <Screen name="Cart" component={CartScreen} />
+        <Screen name="Tabs" component={MyTabs} />
       </Navigator>
   );
 }

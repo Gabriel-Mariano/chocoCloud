@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, Text } from 'react-native';
 import { CartItems } from '../../components/CartItems';
-import { styles } from './style';
+import { styles } from './styles';
 import { useShoppingCart } from '../../context';
 import { COLORS } from '../../themes/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'

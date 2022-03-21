@@ -9,7 +9,7 @@ import { styles } from './styles';
 import imagePlaceholder from '../../assets/image_placeholder.jpeg';
 
 import { useNavigation } from '@react-navigation/native';
-import { StackProps } from '../../routes/index.d';
+import { StackProps } from '../../routes/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const Card: React.FC<ProductsValues> = props => {

@@ -6,7 +6,7 @@ import Logo from '../../assets/favicon.png';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { StackProps } from '../../routes/index.d';
+import { StackProps } from '../../routes/types';
 
 import { styles } from './styles';
 import { COLORS } from '../../themes/colors';
