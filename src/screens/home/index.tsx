@@ -1,21 +1,37 @@
 import React, { useState, useEffect, useCallback} from 'react';
+import { 
+    Alert, 
+    FlatList, 
+    ActivityIndicator, 
+    Text, 
+    Keyboard, 
+    TouchableWithoutFeedback, 
+    View 
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Alert, FlatList, ActivityIndicator, Text } from 'react-native';
 import { Card } from '../../components/Card';
+import { Input } from '../../components/TextInput';
 import { ProductsValues } from '../../context/index.d';
 import { COLORS } from '../../themes/colors';
 import { styles } from './style';
 import { listProducts } from '../../services/api';
 
-import Icon from 'react-native-vector-icons/Entypo'
+import Icon from 'react-native-vector-icons/Entypo';
+import IconSearch from 'react-native-vector-icons/Feather';
 
 const HomeScreen = () => {
     const [products, setProducts] = useState<ProductsValues[]>([]);
+    const [filteredData, setFilteredData] = useState<ProductsValues[]>([]);
+    const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(()=> {
         fetchProduct();
     },[]);
+
+    useEffect(()=>{
+        candySearch(search);
+    },[search]);
 
     const fetchProduct = useCallback(async () => {
         setIsLoading(true);
@@ -29,11 +45,29 @@ const HomeScreen = () => {
 
     const successResponse = (data:[]) => {
         setProducts(data)
+        setFilteredData(data)
     }
 
     const failedResponse = () => {
         Alert.alert('Houve uma falha ao listar os produtos.');
     }
+
+    const candySearch = useCallback((text:string)=> {
+        if(text){
+            const filterProducts = products.filter((product)=>{
+                const item = product.name?.toUpperCase();
+                const textUpperCase = text.toUpperCase();
+    
+                return item!.indexOf(textUpperCase) > -1;
+            });
+            setFilteredData(filterProducts);
+            setSearch(text); 
+        }else{
+            setFilteredData(products);
+            setSearch(text);
+        }
+    },[search]);
+    
 
     if(isLoading){
         return <SafeAreaView style={styles.container}> 
@@ -56,24 +90,35 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}> 
-            <FlatList
-                data={products}
-                style={styles.flatlist}
-                numColumns={2}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item)=> String(item.id)}
-                renderItem={({ item })=> {
-                    return (
-                        <Card
-                            id={item.id}
-                            name={item.name}
-                            description={item.description}
-                            price={item.price}
-                            image={item.image}
-                        />
-                    )
-                }}
-            />
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View>
+                    <Input 
+                        label="Pesquise pelo produto"
+                        placeholder="Ex: Bolo de chocolate, pudim ... "
+                        value={search}
+                        onChangeText={(text)=> setSearch(text)}
+                        leftContent={()=> <IconSearch name="search" size={18}/> }
+                    />
+                    <FlatList
+                        data={filteredData}
+                        style={styles.flatlist}
+                        numColumns={2}
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={(item)=> String(item.id)}
+                        renderItem={({ item })=> {
+                            return (
+                                <Card
+                                    id={item.id}
+                                    name={item.name}
+                                    description={item.description}
+                                    price={item.price}
+                                    image={item.image}
+                                />
+                            )
+                        }}
+                    />
+                </View>
+            </TouchableWithoutFeedback>
         </SafeAreaView>
     )
 }

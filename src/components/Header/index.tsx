@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Pressable } from 'react-native';
 import { Badge } from '../Badge';
 import Icon from 'react-native-vector-icons/Feather'
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/favicon.png';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';

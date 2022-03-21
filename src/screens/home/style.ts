@@ -7,10 +7,10 @@ export const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         paddingVertical:20,
+        paddingHorizontal:10,
     },
     flatlist:{
         width:'100%',
-        paddingHorizontal:5,
     },
     warning:{
         fontWeight:'bold',
