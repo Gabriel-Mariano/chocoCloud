@@ -8,9 +8,26 @@ export const styles = StyleSheet.create({
         paddingVertical:20,
         paddingHorizontal:10,
     },
+    top:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center',
+
+        marginBottom:10,
+    },
     text:{
         marginLeft:5,
         marginBottom:10,
+    },
+    wrapperTotalContent:{
+        justifyContent:'flex-end'
+    },
+    label:{
+        textAlign:'right'
+    },
+    totalValue:{
+        fontWeight:'bold',
+        fontSize:16
     },
     link:{
         alignSelf:'center',

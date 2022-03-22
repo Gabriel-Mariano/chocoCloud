@@ -3,11 +3,7 @@ import {
     Alert, 
     FlatList, 
     ActivityIndicator, 
-    Text, 
-    Keyboard, 
-    TouchableWithoutFeedback, 
-    View, 
-    Pressable
+    Text
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card } from '../../components/Card';
@@ -93,37 +89,35 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}> 
-            <Pressable onPress={Keyboard.dismiss}>
-                <Input 
-                    label="Pesquise pelo produto"
-                    placeholder="Ex: Bolo de chocolate, pudim ... "
-                    value={search}
-                    onChangeText={(text)=> setSearch(text)}
-                    leftContent={()=> <IconSearch name="search" size={18}/> }
-                    style={styles.input}
-                />
-                <FlatList
-                    data={filteredData}
-                    style={styles.flatlist}
-                    numColumns={2}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item)=> String(item.id)}
-                    renderItem={({ item })=> {
-                        return (
-                            <Card
-                                id={item.id}
-                                name={item.name}
-                                description={item.description}
-                                price={item.price}
-                                isFavorite={item.isFavorite}
-                                image={item.image}
-                                filteredData={filteredData}
-                                setFilteredData={setFilteredData}
-                            />
-                        )
-                    }}
-                />
-            </Pressable>
+            <Input 
+                label="Pesquise pelo produto"
+                placeholder="Ex: Bolo de chocolate, pudim ... "
+                value={search}
+                onChangeText={(text)=> setSearch(text)}
+                leftContent={()=> <IconSearch name="search" size={18}/> }
+                style={styles.input}
+            />
+            <FlatList
+                data={filteredData}
+                style={styles.flatlist}
+                numColumns={2}
+                showsVerticalScrollIndicator={false}
+                keyExtractor={(item)=> String(item.id)}
+                renderItem={({ item })=> {
+                    return (
+                        <Card
+                            id={item.id}
+                            name={item.name}
+                            description={item.description}
+                            price={item.price}
+                            isFavorite={item.isFavorite}
+                            image={item.image}
+                            filteredData={filteredData}
+                            setFilteredData={setFilteredData}
+                        />
+                    )
+                }}
+            />
         </SafeAreaView>
     )
 }

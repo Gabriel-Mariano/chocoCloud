@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FlatList, Text } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
 import { CartItems } from '../../components/CartItems';
 import { Button } from '../../components/Button';
 import { styles } from './styles';
 import { COLORS } from '../../themes/colors';
 import { useShoppingCart } from '../../context/ShoppingCart';
-
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native';
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 const CartScreen = () => {
+    const [totally, setTotally] = useState(0);
+
     const { cart } = useShoppingCart();
     const navigation = useNavigation();
+
+    useEffect(()=>{
+        renderTotalValue();
+    },[cart])
+    
+    const renderLink = () => {
+        return cart.length > 0
+            ? `Continuar adicionando no carrinho`
+            : null 
+    }
 
     const renderText = () => {
         return cart.length > 1
@@ -20,10 +32,10 @@ const CartScreen = () => {
             : `${cart.length} produto selecionado`
     }
 
-    const renderLink = () => {
-        return cart.length > 0
-            ? `Continuar adicionando no carrinho`
-            : null 
+    const renderTotalValue = () => {
+        const total = cart.reduce((acc,cur)=> acc = acc + cur.price! , 0 )
+
+        setTotally(total);
     }
 
     if(cart.length === 0){
@@ -44,9 +56,21 @@ const CartScreen = () => {
             <Text style={styles.link} onPress={()=> navigation.goBack() }>
                 {renderLink()}
             </Text>
-            <Text style={styles.text}>
-                {renderText()}
-            </Text>
+            <View style={styles.top}>
+                <View>
+                    <Text style={styles.text}>
+                        {renderText()}
+                    </Text>
+                </View>
+                <View style={styles.wrapperTotalContent}>
+                    <Text style={styles.label}>
+                        Total
+                    </Text>
+                    <Text style={styles.totalValue}>
+                        R${totally.toFixed(2)}
+                    </Text>
+                </View>
+            </View>
             <FlatList
                 data={cart}
                 style={styles.flatlist}

@@ -20,7 +20,7 @@ const FavoritesScreen = () => {
 
     const handleFilterFavorites = () => {
         const filterFavorites = products.filter((products) => 
-        products.isFavorite
+            products.isFavorite
         )
 
         setFavorites(filterFavorites)
