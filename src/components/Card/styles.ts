@@ -42,6 +42,8 @@ export const styles = StyleSheet.create({
     footer:{
         flexDirection:'row',
         justifyContent:'space-between',
-        alignItems:'center'
+        alignItems:'center',
+
+        marginBottom:20,
     }
 })

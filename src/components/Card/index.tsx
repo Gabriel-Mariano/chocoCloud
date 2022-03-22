@@ -62,8 +62,8 @@ const Card: React.FC<ProductsValues> = props => {
 
     const renderIcons = ()  => {
         return isFavorite
-            ? <Icon name="heart" size={24} color={COLORS.danger} />
-            : <Icon name="heart-outline" size={24} color={COLORS.danger} />
+            ? <Icon name="heart" size={28} color={COLORS.danger} />
+            : <Icon name="heart-outline" size={28} color={COLORS.danger} />
     }
 
     const renderButtons = () => {

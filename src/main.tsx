@@ -19,7 +19,7 @@ const Main = () => {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar 
-                barStyle="light-content" 
+                barStyle="default"
                 backgroundColor={statusBarBackgroundColor} 
             />
             <ProductsProvider>
