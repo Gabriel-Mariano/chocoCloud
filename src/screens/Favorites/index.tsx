@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {  FlatList, Text } from 'react-native';
+import { COLORS } from '../../themes/colors';
 import { styles } from './styles';
-import { CartItems } from '../../components/CartItems';
 import { useProduct } from '../../context/Products';
-import { useFavorites } from '../../context/Favorites';
 import { ProductsValues } from '../../context/Products/index.d';
+import { FavoriteItems } from '../../components/FavoriteItems';
 
 import Icon from 'react-native-vector-icons/Ionicons'
-import { COLORS } from '../../themes/colors';
-import { FavoriteItems } from '../../components/FavoriteItems';
 
 const FavoritesScreen = () => {
     const [favorites, setFavorites ] = useState<ProductsValues[]>([]);
