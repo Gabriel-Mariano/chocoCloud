@@ -1,14 +1,9 @@
 import React from "react";
+import { ProductsValues } from '../../context/types/index.d';
 
-interface ProductsValues {
-    id?:number;
-    name?:string;
-    description?:string;
-    price?:number;
-    isFavorite?:boolean;
-    image?:string;
+interface CardValues extends ProductsValues {
     filteredData?:ProductsValues[],
     setFilteredData?:React.Dispatch<React.SetStateAction<ProductsValues[]>>
 }
 
-export { ProductsValues };
+export { ProductsValues, CardValues };

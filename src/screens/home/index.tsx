@@ -6,11 +6,13 @@ import {
     Text, 
     Keyboard, 
     TouchableWithoutFeedback, 
-    View 
+    View, 
+    Pressable
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card } from '../../components/Card';
 import { Input } from '../../components/TextInput';
+import { useProduct } from '../../context/Products';
 import { ProductsValues } from '../../context/ShoppingCart/index.d';
 import { COLORS } from '../../themes/colors';
 import { styles } from './styles';
@@ -18,8 +20,6 @@ import { listProducts } from '../../services/api';
 
 import IconEmoji from 'react-native-vector-icons/Entypo';
 import IconSearch from 'react-native-vector-icons/Feather';
-import { useFavorites } from '../../context/Favorites';
-import { useProduct } from '../../context/Products';
 
 const HomeScreen = () => {
     const [search, setSearch] = useState('');
@@ -93,39 +93,37 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}> 
-            {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
-                
-                    <Input 
-                        label="Pesquise pelo produto"
-                        placeholder="Ex: Bolo de chocolate, pudim ... "
-                        value={search}
-                        onChangeText={(text)=> setSearch(text)}
-                        leftContent={()=> <IconSearch name="search" size={18}/> }
-                        style={styles.input}
-                    />
-                    <FlatList
-                        data={filteredData}
-                        style={styles.flatlist}
-                        numColumns={2}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={(item)=> String(item.id)}
-                        renderItem={({ item })=> {
-                            return (
-                                <Card
-                                    id={item.id}
-                                    name={item.name}
-                                    description={item.description}
-                                    price={item.price}
-                                    isFavorite={item.isFavorite}
-                                    image={item.image}
-                                    filteredData={filteredData}
-                                    setFilteredData={setFilteredData}
-                                />
-                            )
-                        }}
-                    />
-                
-            {/* </TouchableWithoutFeedback> */}
+            <Pressable onPress={Keyboard.dismiss}>
+                <Input 
+                    label="Pesquise pelo produto"
+                    placeholder="Ex: Bolo de chocolate, pudim ... "
+                    value={search}
+                    onChangeText={(text)=> setSearch(text)}
+                    leftContent={()=> <IconSearch name="search" size={18}/> }
+                    style={styles.input}
+                />
+                <FlatList
+                    data={filteredData}
+                    style={styles.flatlist}
+                    numColumns={2}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item)=> String(item.id)}
+                    renderItem={({ item })=> {
+                        return (
+                            <Card
+                                id={item.id}
+                                name={item.name}
+                                description={item.description}
+                                price={item.price}
+                                isFavorite={item.isFavorite}
+                                image={item.image}
+                                filteredData={filteredData}
+                                setFilteredData={setFilteredData}
+                            />
+                        )
+                    }}
+                />
+            </Pressable>
         </SafeAreaView>
     )
 }

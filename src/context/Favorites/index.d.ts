@@ -1,13 +1,5 @@
 import React from 'react';
-
-interface ProductsValues {
-    id?:number;
-    name?:string;
-    description?:string;
-    price?:number;
-    isFavorite?:boolean;
-    image?:string;
-}
+import { ProductsValues } from '../types/index.d';
 
 interface FavoritesContextProps {
     favorites:ProductsValues[];

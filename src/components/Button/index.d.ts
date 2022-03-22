@@ -4,6 +4,7 @@ interface ButtonProps extends PressableProps {
     title?:string;
     background?:string;
     color?:string;
+    size?:number;
 }
 
 export { ButtonProps };

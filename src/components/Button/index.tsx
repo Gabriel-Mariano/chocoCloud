@@ -8,6 +8,7 @@ const Button:React.FC<ButtonProps> = props => {
         title, 
         background, 
         color, 
+        size,
         ...rest 
     } = props;
 
@@ -15,7 +16,10 @@ const Button:React.FC<ButtonProps> = props => {
         <Pressable
             style={[
                 styles.container,
-                { backgroundColor: background ? background : '#000'}
+                { 
+                    backgroundColor: background ? background : '#000',
+                    height: size ? size : 36
+                }
             ]}
             {...rest}
         >

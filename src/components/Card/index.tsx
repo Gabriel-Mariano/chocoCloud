@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable } from 'react-native';
 import { Button } from '../Button';
 import { useShoppingCart } from '../../context/ShoppingCart';
 import { useProduct } from '../../context/Products';
-import { ProductsValues } from './index.d';
+import { CardValues } from './index.d';
 import { COLORS } from '../../themes/colors';
 import { styles } from './styles';
 
@@ -14,7 +14,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import imagePlaceholder from '../../assets/image_placeholder.jpeg';
 
-const Card: React.FC<ProductsValues> = props => {
+const Card: React.FC<CardValues> = props => {
     const {
         id,
         name,
