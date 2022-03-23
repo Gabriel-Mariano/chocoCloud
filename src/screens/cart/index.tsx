@@ -18,7 +18,7 @@ const CartScreen = () => {
     const [totally, setTotally] = useState(0);
     const [modalIsVisible, setModalIsVisible] = useState(false);
 
-    const { cart } = useShoppingCart();
+    const { cart, setCart } = useShoppingCart();
     const navigation = useNavigation<NativeStackNavigationProp<StackProps>>();
 
     useEffect(()=>{
@@ -50,6 +50,7 @@ const CartScreen = () => {
     const handleCloseModal = () => {
         navigation.navigate('Home')
         setModalIsVisible(false)
+        setCart([]);
     }
 
     const renderModal = () => (
