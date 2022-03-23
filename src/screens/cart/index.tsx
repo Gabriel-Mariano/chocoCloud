@@ -52,7 +52,7 @@ const CartScreen = () => {
         setModalIsVisible(false)
     }
 
-    const handleModal = () => (
+    const renderModal = () => (
         <ModalComponent
             isVisible={modalIsVisible}
             title="Compra efetuada"
@@ -76,7 +76,7 @@ const CartScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            {handleModal()}
+            {renderModal()}
             <View style={styles.wrapperContent}>
                 <Text style={styles.link} onPress={()=> navigation.goBack() }>
                     {renderLink()}
