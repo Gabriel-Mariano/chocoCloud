@@ -2,7 +2,7 @@
 Aplicativo de chocolateria 
 
 ## Visão Global
-![screens](https://github.com/Gabriel-Mariano/chocoCloud/blob/main/background.png)
+![screens](https://github.com/Gabriel-Mariano/chocoCloud/blob/main/background-cover.png)
 **Choco Cloud** é meu app de chocolateria. Para consumir os dados simulei uma api usando o gist do github.
 
  # Rodar em Ambiente Android
