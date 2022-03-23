@@ -2,7 +2,11 @@ import { StyleSheet } from 'react-native';
 import { COLORS } from '../../themes/colors';
 
 export const styles = StyleSheet.create({
+
     container:{
+        flex:1,
+    },
+    wrapperContent:{
         flex:1,
         
         paddingVertical:20,
@@ -51,5 +55,14 @@ export const styles = StyleSheet.create({
         fontWeight:'bold',
         color:COLORS.placeholder,
         marginVertical:20,
+    },
+    buttomCustom:{
+        backgroundColor:COLORS.success,
+        justifyContent:'center',
+        alignItems:'center',
+        width:'100%',
+        height:50,
+        position:'absolute',
+        bottom:0,
     }
 })

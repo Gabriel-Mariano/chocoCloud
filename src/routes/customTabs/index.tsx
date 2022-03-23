@@ -19,7 +19,7 @@ const Tabs = () => {
               tabBarInactiveTintColor:COLORS.placeholder,
               tabBarStyle:{ 
                   backgroundColor:COLORS.secondary,
-                  height:Platform.OS === 'android'? 60 : 70,
+                  height:Platform.OS === 'android'? 60 : 62,
                   alignItems:'center'
               },
           }}

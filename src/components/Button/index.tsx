@@ -18,7 +18,7 @@ const Button:React.FC<ButtonProps> = props => {
                 styles.container,
                 { 
                     backgroundColor: background ? background : '#000',
-                    height: size ? size : 36
+                    height: size ? size : 36,
                 }
             ]}
             {...rest}
