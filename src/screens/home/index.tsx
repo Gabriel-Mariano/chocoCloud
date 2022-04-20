@@ -3,7 +3,9 @@ import {
     Alert, 
     FlatList, 
     ActivityIndicator, 
-    Text
+    View,
+    Text,
+    TouchableOpacity
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card } from '../../components/Card';
@@ -16,9 +18,11 @@ import { listProducts } from '../../services/api';
 
 import IconEmoji from 'react-native-vector-icons/Entypo';
 import IconSearch from 'react-native-vector-icons/Feather';
+import IconFilter from 'react-native-vector-icons/Ionicons';
 
 const HomeScreen = () => {
     const [search, setSearch] = useState('');
+    const [isActive, setIsActive] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [filteredData, setFilteredData] = useState<ProductsValues[]>([]);
 
@@ -67,7 +71,6 @@ const HomeScreen = () => {
         }
     },[search]);
     
-
     if(isLoading){
         return <SafeAreaView style={styles.container}> 
                     <ActivityIndicator size="large" color={COLORS.primary}/>
@@ -88,15 +91,38 @@ const HomeScreen = () => {
     }
 
     return (
-        <SafeAreaView style={styles.container}> 
-            <Input 
-                label="Pesquise pelo produto"
-                placeholder="Ex: Bolo de chocolate, pudim ... "
-                value={search}
-                onChangeText={(text)=> setSearch(text)}
-                leftContent={()=> <IconSearch name="search" size={18}/> }
-                style={styles.input}
-            />
+        <SafeAreaView style={styles.container}>
+            <View style={styles.searchWrapper}>
+                <Input 
+                    label="Pesquise pelo produto"
+                    placeholder="Ex: Bolo de chocolate, pudim ... "
+                    value={search}
+                    onChangeText={(text)=> setSearch(text)}
+                    leftContent={()=> <IconSearch name="search" size={18}/> }
+                    style={styles.input}
+                />
+                <TouchableOpacity 
+                    onPress={()=> setIsActive(!isActive) }
+                    style={[ 
+                        styles.buttonFilter,
+                        {
+                            backgroundColor:isActive 
+                                ? COLORS.primary 
+                                : COLORS.white
+                        }
+                    ]}
+                >
+                    <IconFilter 
+                        name="filter" 
+                        size={18}
+                        color={
+                            isActive 
+                                ? COLORS.white 
+                                : COLORS.dark
+                        }
+                    />
+                </TouchableOpacity>
+            </View> 
             <FlatList
                 data={filteredData}
                 style={styles.flatlist}
