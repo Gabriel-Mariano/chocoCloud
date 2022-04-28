@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback, useRef} from 'react';
 import { 
     Alert, 
     FlatList, 
@@ -12,6 +12,7 @@ import { Card } from '../../components/Card';
 import { Input } from '../../components/TextInput';
 import { useProduct } from '../../context/Products';
 import { ProductsValues } from '../../context/ShoppingCart/index.d';
+import { Modalize } from 'react-native-modalize';
 import { COLORS } from '../../themes/colors';
 import { styles } from './styles';
 import { listProducts } from '../../services/api';
@@ -19,12 +20,14 @@ import { listProducts } from '../../services/api';
 import IconEmoji from 'react-native-vector-icons/Entypo';
 import IconSearch from 'react-native-vector-icons/Feather';
 import IconFilter from 'react-native-vector-icons/Ionicons';
+import { BottomSheetItems } from '../../components/BottomSheetItems';
 
 const HomeScreen = () => {
     const [search, setSearch] = useState('');
     const [isActive, setIsActive] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [filteredData, setFilteredData] = useState<ProductsValues[]>([]);
+    const modalizeRef = useRef<Modalize>(null)
 
     const { products, setProducts } = useProduct();
 
@@ -70,6 +73,19 @@ const HomeScreen = () => {
             setSearch(text);
         }
     },[search]);
+
+    const onOpen = () => {
+        modalizeRef.current?.open();
+    }
+
+    const onClose = () => {
+        setIsActive(false);
+    }
+
+    const handleModalize = () => {
+        setIsActive(true);
+        onOpen()
+    }
     
     if(isLoading){
         return <SafeAreaView style={styles.container}> 
@@ -102,7 +118,7 @@ const HomeScreen = () => {
                     style={styles.input}
                 />
                 <TouchableOpacity 
-                    onPress={()=> setIsActive(!isActive) }
+                    onPress={handleModalize}
                     style={[ 
                         styles.buttonFilter,
                         {
@@ -144,6 +160,14 @@ const HomeScreen = () => {
                     )
                 }}
             />
+            <Modalize 
+                ref={modalizeRef}
+                snapPoint={400}
+                onClose={onClose}
+                modalHeight={400}
+            >
+                <BottomSheetItems />
+            </Modalize>
         </SafeAreaView>
     )
 }
