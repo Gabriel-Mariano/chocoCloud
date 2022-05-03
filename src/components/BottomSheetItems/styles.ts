@@ -12,5 +12,13 @@ export const styles = StyleSheet.create({
         color:COLORS.primary,
         fontSize:18,
         textAlign:'center'
+    },
+    labels:{
+        fontSize:18,
+        color:COLORS.black,
+        marginVertical:10
+    },
+    footer:{
+        paddingHorizontal:20,
     }
 })

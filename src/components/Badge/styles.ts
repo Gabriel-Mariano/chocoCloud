@@ -17,5 +17,19 @@ export const styles = StyleSheet.create({
     title:{
         color:COLORS.white,
         fontSize:10
+    },
+    wrapperTitle:{
+        width:90,
+        height:35,
+
+        justifyContent:'center',
+        alignItems:'center',
+
+        borderTopRightRadius:20,
+        borderTopLeftRadius:20,
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20,
+       backgroundColor:COLORS.light,
+       marginHorizontal:5 
     }
 })
